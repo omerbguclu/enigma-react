@@ -5,7 +5,6 @@ const store_dictionary = {
 }
 
 const reducer = (state = store_dictionary.default_state, action) => {
-    console.log(state);
     switch (action.type) {
         case INCREASE_THE_STATE:
             return state + 1;

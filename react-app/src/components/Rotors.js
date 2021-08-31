@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector } from 'react-redux';
 
 function Rotors() {
-    const rotors = useSelector((state) => state).rotors;
+    const { rotors } = useSelector((state) => state);
+    console.log(rotors)
     let keyId = 0;
     return (
         <table className="table table-striped">

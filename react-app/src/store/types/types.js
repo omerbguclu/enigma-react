@@ -1,3 +1,4 @@
 export const INCREASE_THE_STATE = "INCREASE_THE_STATE";
 export const DECREASE_THE_STATE = "DECREASE_THE_STATE";
 export const LIST_ROTORS = "LIST_ROTORS";
+export const TURN_ROTORS = "TURN_ROTORS";
