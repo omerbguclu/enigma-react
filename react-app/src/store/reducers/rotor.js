@@ -1,6 +1,6 @@
-import { LIST_ROTORS, TURN_ROTORS } from "../types/types";
+import { LIST_ROTORS, TURN_ROTORS, CHANGE_SELECTED_ROTOR } from "../types/types";
 
-const store_dictionary = {
+const store_rotors = {
     rotors: {
         rotorI: {
             rotorName: "I",
@@ -42,24 +42,42 @@ const store_dictionary = {
             rotorOrder: "HTLXOCBJSPDZRAMEWNIUYGV",
             modelName: "M3 & M4 Naval (FEB 1942)",
         }
-    }
+    },
+}
+
+const store_selected_rotor = {
+    selectedRotor : {...store_rotors.rotors}.rotorI
+}
+
+const store_dictionary = {
+    store_rotors,
+    store_selected_rotor
 }
 
 const turnRotor = (rotor) => {
     rotor.rotorOrder = rotor.rotorOrder.slice(-1) + rotor.rotorOrder.slice(0, -1);
 };
 
-const reducer = (state = store_dictionary.rotors, action) => {
+const changeSelectedRotor = (rotor) => 
+{
+    store_selected_rotor.selectedRotor = rotor;
+}
+
+const reducer = (state = store_dictionary, action) => {
     switch (action.type) {
         case LIST_ROTORS:
             return state;
 
         case TURN_ROTORS:
-            turnRotor(state.rotorI);
+            turnRotor(state.store_rotors.rotors.rotorI);
+            return { ...state };
+        
+        case CHANGE_SELECTED_ROTOR:
+            changeSelectedRotor(action.payload)
             return { ...state };
 
         default:
-            return state;
+            return { ...state };
     }
 }
 

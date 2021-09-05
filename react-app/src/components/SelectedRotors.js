@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from 'react-redux';
+import RotorDropdowns from "./RotorDropdowns";
 
-function Rotors() {
+function SelectedRotors() {
     let { rotors } = useSelector((state) => state);
-    rotors = {...rotors}.store_rotors.rotors
+    let rotor = {...rotors}.store_selected_rotor.selectedRotor;
     let keyId = 0;
     return (
         <table className="table table-striped">
@@ -12,20 +13,19 @@ function Rotors() {
                     <th scope="col">Rotor Name</th>
                     <th scope="col">Rotor Order</th>
                     <th scope="col">Model Name</th>
+                    <th scope="col">Select Rotor</th>
                 </tr>
             </thead>
             <tbody>
-                {Object.values(rotors).map(rotor => {
-                    const { rotorName, rotorOrder, modelName } = rotor;
-                    return <tr key={keyId++}>
-                        <td>{rotorName}</td>
-                        <td>{rotorOrder}</td>
-                        <td>{modelName}</td>
-                    </tr>
-                })}
+                <tr key={keyId++}>
+                    <td>{rotor.rotorName}</td>
+                    <td>{rotor.rotorOrder}</td>
+                    <td>{rotor.modelName}</td>
+                    <td><RotorDropdowns/></td>
+                </tr>
             </tbody>
         </table>
     )
 }
 
-export default Rotors;
+export default SelectedRotors;

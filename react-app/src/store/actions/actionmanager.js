@@ -1,4 +1,4 @@
-import { INCREASE_THE_STATE, DECREASE_THE_STATE, TURN_ROTORS } from "../types/types";
+import { INCREASE_THE_STATE, DECREASE_THE_STATE, TURN_ROTORS, CHANGE_SELECTED_ROTOR } from "../types/types";
 
 export const increaser = () => {
     return {
@@ -15,5 +15,12 @@ export const decreaser = () => {
 export const turnRotor = () => {
     return {
         type: TURN_ROTORS,
+    }
+}
+
+export const changeSelectedRotor = (payload) => {
+    return {
+        type: CHANGE_SELECTED_ROTOR,
+        payload : payload
     }
 }
