@@ -4,7 +4,7 @@ import RotorReducer from './reducers/rotor';
 
 const reducers = combineReducers({
     counter: CounterReducer,
-    rotors: RotorReducer,
+    rotor_store: RotorReducer,
 });
 
 const store = createStore(reducers);

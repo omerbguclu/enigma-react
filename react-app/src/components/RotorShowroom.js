@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from 'react-redux';
-import RotorDropdowns from "./RotorDropdowns";
+import RotorSelectorDropdown from "./RotorSelectorDropdown";
 
-function SelectedRotors() {
-    let { rotors } = useSelector((state) => state);
-    let rotor = {...rotors}.store_selected_rotor.selectedRotor;
+const RotorShowroom = () => {
+    let { rotor_store } = useSelector((state) => state);
+    let selectedRotors = {...rotor_store}.store_selected_rotor.selectedRotors;
     let keyId = 0;
+
     return (
         <table className="table table-striped">
             <thead>
@@ -17,15 +18,17 @@ function SelectedRotors() {
                 </tr>
             </thead>
             <tbody>
-                <tr key={keyId++}>
+                {Object.values(selectedRotors).map(rotor => {
+                    return <tr key={keyId}>
                     <td>{rotor.rotorName}</td>
                     <td>{rotor.rotorOrder}</td>
                     <td>{rotor.modelName}</td>
-                    <td><RotorDropdowns/></td>
-                </tr>
+                    <td><RotorSelectorDropdown id={keyId++}/></td>
+                    </tr>
+                    })}
             </tbody>
         </table>
     )
 }
 
-export default SelectedRotors;
+export default RotorShowroom;
