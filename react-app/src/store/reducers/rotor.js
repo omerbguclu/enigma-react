@@ -81,7 +81,7 @@ const reducer = (state = store_dictionary, action) => {
             return state;
 
         case TURN_ROTORS:
-            turnRotor(state.store_rotors.rotors.rotorI);
+            turnRotor(action.payload);
             return { ...state };
 
         case CHANGE_SELECTED_ROTOR:
