@@ -1,6 +1,6 @@
 import { LIST_ROTORS, TURN_ROTORS, CHANGE_SELECTED_ROTOR } from "../types/types";
 
-const store_rotors = {
+export const store_rotors = {
     rotors: {
         rotorI: {
             id: 1,
@@ -59,7 +59,6 @@ const store_selected_rotor = {
         { ...store_rotors.rotors }.rotorII,
         { ...store_rotors.rotors }.rotorIII
     ],
-    selectedRotor: { ...store_rotors.rotors }.rotorI
 }
 
 const store_dictionary = {
@@ -67,7 +66,7 @@ const store_dictionary = {
     store_selected_rotor
 }
 
-const turnRotor = (rotor) => {
+export const turnRotor = (rotor) => {
     rotor.rotorOrder = rotor.rotorOrder.slice(-1) + rotor.rotorOrder.slice(0, -1);
 };
 
