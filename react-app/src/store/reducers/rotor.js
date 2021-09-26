@@ -65,8 +65,6 @@ const store_dictionary = {
 const reducer = (state = store_dictionary, action) => {
     switch (action.type) {
         case LIST_ROTORS:
-            return state;
-
         case TURN_ROTORS:
         case CHANGE_SELECTED_ROTOR:
         default:
