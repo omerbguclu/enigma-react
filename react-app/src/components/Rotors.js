@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 function Rotors() {
     let { rotor_store } = useSelector((state) => state);
-    let rotors = {...rotor_store}.store_rotors.rotors
+    let rotors = {...rotor_store}.rotors
     let keyId = 0;
     return (
         <table className="table table-striped">

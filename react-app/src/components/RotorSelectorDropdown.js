@@ -4,12 +4,17 @@ import { changeSelectedRotor } from "../store/actions/actionmanager";
 
 function RotorSelector(props) {
     let { rotor_store } = useSelector((state) => state);
-    let rotors = { ...rotor_store }.store_rotors.rotors
-    let selectedRotor = { ...rotor_store }.store_selected_rotor.selectedRotors[props.id]
+    let rotors = rotor_store.rotors
+    let selectedRotor = { ...rotor_store }.selectedRotors[props.id]
     const dispatch = useDispatch();
     let keyId = 0;
     const [dropdown, setDropdown] = useState(false);
     const toggleOpen = () => setDropdown(!dropdown);
+
+    const changeSelectedRotorIn = (payload) => {
+        rotor_store.selectedRotors[payload.id] = payload.rotor;
+        dispatch(changeSelectedRotor(payload));
+    }
 
     return (
         <div>
@@ -20,12 +25,12 @@ function RotorSelector(props) {
                 </button>
                 <div className={`dropdown-menu ${dropdown ? 'show' : ''}`} aria-labelledby="dropdownMenuButton">
                     {Object.values(rotors).map(rotor => {
-                        let payload = 
+                        let payload =
                         {
-                            id : props.id,
-                            rotor : rotor
+                            id: props.id,
+                            rotor: rotor
                         }
-                        return <button key={keyId++} className="dropdown-item" type="button" onClick={() => { dispatch(changeSelectedRotor(payload)); toggleOpen(); }} >{rotor.rotorName}</button>
+                        return <button key={keyId++} className="dropdown-item" type="button" onClick={() => { changeSelectedRotorIn(payload); toggleOpen(); }} >{rotor.rotorName}</button>
                     })}
                 </div>
             </div>
